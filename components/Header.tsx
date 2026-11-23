@@ -2,14 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LOGIN_URL, cta, nav } from "@/content/site";
 import { Button } from "./Button";
 import { Logo } from "./Logo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const bar = useRef<HTMLSpanElement>(null);
   const pathname = usePathname();
+  useEffect(() => {
+    let raf = 0;
+    const on = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { const y = window.scrollY; setScrolled(y > 8); const h = document.documentElement.scrollHeight - window.innerHeight; bar.current?.style.setProperty("--p", String(h > 0 ? Math.min(1, y / h) : 0)); }); };
+    on(); window.addEventListener("scroll", on, { passive: true });
+    return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
+  }, [pathname]);
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -19,7 +27,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="header">
+    <header className={`header${scrolled ? " scrolled" : ""}`}>
       <div className="wrap header-in">
         <Logo />
         <nav className="nav-d" aria-label="Main">
@@ -41,6 +49,7 @@ export function Header() {
           </svg>
         </button>
       </div>
+      <span className="progress" ref={bar} aria-hidden="true" />
       {open && (
         <div id="mobile-nav" className="mpanel">
           {nav.map((n) => <a key={n.label} className="ml" href={n.href}>{n.label}</a>)}

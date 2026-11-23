@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { CountUp } from "./CountUp";
 
 /**
  * Product interface illustrations.
@@ -33,9 +34,9 @@ export function Spark({ pts, color = "var(--accent)" }: { pts: number[]; color?:
 
 const Thumb = ({ a, b }: { a: string; b: string }) => <span className="thumb" style={{ background: `linear-gradient(135deg, ${a}, ${b})` }} />;
 
-export function Wave({ n = 28 }: { n?: number }) {
+export function Wave({ n = 28, idle }: { n?: number; idle?: boolean }) {
   return (
-    <div className="wave">
+    <div className={`wave${idle ? " idle" : ""}`}>
       {Array.from({ length: n }, (_, i) => {
         const h = 28 + ((i * 37) % 70);
         return <i key={i} style={{ "--h": `${h}%`, "--d": `${(i % 9) * 0.11}s` } as CSSProperties} />;
@@ -222,10 +223,10 @@ export function ProfitChart() {
   const bw = w / rev.length;
   const line = net.map((v, i) => `${i ? "L" : "M"}${i * bw + bw / 2},${h - (v / max) * h}`).join(" ");
   return (
-    <svg className="chart" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" aria-hidden="true">
+    <svg className="chart draw" viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" aria-hidden="true">
       {[0.25, 0.5, 0.75].map((g) => <line key={g} x1="0" x2={w} y1={h * g} y2={h * g} stroke="var(--a-ln)" strokeWidth="1" vectorEffect="non-scaling-stroke" />)}
-      {rev.map((v, i) => <rect key={i} x={i * bw + 6} width={bw - 12} y={h - (v / max) * h} height={(v / max) * h} rx="3" fill="var(--a-ln)" />)}
-      <path d={line} fill="none" stroke="var(--accent)" strokeWidth="2.4" vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
+      {rev.map((v, i) => <rect key={i} style={{ "--i": i } as CSSProperties} x={i * bw + 6} width={bw - 12} y={h - (v / max) * h} height={(v / max) * h} rx="3" fill="var(--a-ln)" />)}
+      <path className="ln" d={line} fill="none" stroke="var(--accent)" strokeWidth="2.4" vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
       {net.map((v, i) => i === net.length - 1 && <circle key={i} cx={i * bw + bw / 2} cy={h - (v / max) * h} r="4.5" fill="var(--accent)" />)}
     </svg>
   );
@@ -235,9 +236,9 @@ export function ProfitApp() {
   return (
     <AppWin title="zenbify / profit" dk label="Profit dashboard with revenue, costs, net profit, trend chart and top products, using sample data">
       <div className="kpis">
-        <div className="kpi"><small>Revenue</small><strong>৳1,24,500</strong><span className="d">+12%</span></div>
-        <div className="kpi"><small>Costs</small><strong>৳76,250</strong><span className="d" style={{ color: "var(--a-mut)" }}>incl. delivery</span></div>
-        <div className="kpi"><small>Net profit</small><strong style={{ color: "var(--accent)" }}>৳48,250</strong><span className="d">+9%</span></div>
+        <div className="kpi"><small>Revenue</small><strong><CountUp value={124500} /></strong><span className="d">+12%</span></div>
+        <div className="kpi"><small>Costs</small><strong><CountUp value={76250} /></strong><span className="d" style={{ color: "var(--a-mut)" }}>incl. delivery</span></div>
+        <div className="kpi"><small>Net profit</small><strong style={{ color: "var(--accent)" }}><CountUp value={48250} /></strong><span className="d">+9%</span></div>
       </div>
       <div className="card-a p-main">
         <div className="a-title" style={{ marginBottom: 8 }}><h4 style={{ margin: 0 }}>Revenue and net profit, last 12 weeks</h4><div className="legend"><span><i style={{ background: "var(--a-ln)" }} />Revenue</span><span><i style={{ background: "var(--accent)" }} />Net profit</span></div></div>

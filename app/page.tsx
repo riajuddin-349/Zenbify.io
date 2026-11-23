@@ -4,9 +4,12 @@ import { CtaBand } from "@/components/CtaBand";
 import { Faq, faqJsonLd } from "@/components/Faq";
 import { Hub } from "@/components/Hub";
 import { Pricing } from "@/components/Pricing";
+import { LiveHero } from "@/components/LiveHero";
+import { Icon } from "@/components/Icon";
+import { ScrollWords } from "@/components/ScrollWords";
 import { WorkflowStory } from "@/components/WorkflowStory";
 import {
-  AiCall, Chaos, CampaignPane, ConfirmPane, CourierPane, OneRecord, OrdersApp, OrdersTable, ProfitApp, Recovery, ShipCard, StoreBuilder, Storefronts, Toast, AppWin,
+  Chaos, CampaignPane, ConfirmPane, CourierPane, OneRecord, OrdersApp, OrdersTable, ProfitApp, Recovery, StoreBuilder, Storefronts, AppWin,
 } from "@/components/mocks";
 import { HOTLINE, LEARN_URL, cta, legalLinks, merchantStories, themes, trial, workflow } from "@/content/site";
 
@@ -30,12 +33,7 @@ export default function Home() {
             </div>
             <p className="fine"><span>{trial.note}</span><span>No coding required</span>{trial.trialLength && <span>{trial.trialLength}</span>}</p>
           </div>
-          <div className="stage">
-            <OrdersApp className="main" />
-            <AiCall className="fl call" />
-            <ShipCard className="fl ship" />
-            <Toast className="fl toast" />
-          </div>
+          <LiveHero />
         </div>
       </section>
 
@@ -49,14 +47,14 @@ export default function Home() {
       {/* 2 · Old way → one record */}
       <section className="sec on-paper" aria-labelledby="diff-title">
         <div className="wrap">
-          <div className="sec-head two">
+          <div className="sec-head two reveal">
             <div style={{ display: "grid", gap: 22 }}>
               <span className="label"><b>01</b> The Zenbify difference</span>
               <h2 className="h2" id="diff-title">One order shouldn’t live in <span className="serif-acc">six places.</span></h2>
             </div>
             <p className="lead">Chats, inboxes, sheets, courier slips and payment messages become a single order record that moves from received to profit.</p>
           </div>
-          <div className="c2o">
+          <div className="c2o reveal">
             <Chaos />
             <div className="joiner" aria-hidden="true" />
             <OneRecord />
@@ -67,7 +65,7 @@ export default function Home() {
       {/* 3 · Interactive workflow */}
       <section className="sec on-paper-2" id="workflow" aria-labelledby="wf-title">
         <div className="wrap">
-          <div className="sec-head two">
+          <div className="sec-head two reveal">
             <div style={{ display: "grid", gap: 22 }}>
               <span className="label"><b>02</b> How it works</span>
               <h2 className="h2" id="wf-title">From store to profit, <span className="serif-acc">in one flow.</span></h2>
@@ -92,14 +90,14 @@ export default function Home() {
             <span className="label"><b>03</b> Order confirmation and fake-order protection</span>
             <h2 className="h2" id="guard-title" style={{ margin: "22px 0 0" }}>Know which orders are real <span className="serif-acc">before you ship.</span></h2>
             <ul className="ticks">
-              <li><span>A</span>Risky and duplicate orders are flagged as they arrive</li>
-              <li><span>B</span>AI calling confirms the order with the customer</li>
-              <li><span>C</span>Failed or cancelled orders are followed up for recovery</li>
-              <li><span>D</span>Confirmed orders go straight to courier booking</li>
+              <li><span><Icon name="shield" /></span>Risky and duplicate orders are flagged as they arrive</li>
+              <li><span><Icon name="phone" /></span>AI calling confirms the order with the customer</li>
+              <li><span><Icon name="refresh" /></span>Failed or cancelled orders are followed up for recovery</li>
+              <li><span><Icon name="truck" /></span>Confirmed orders go straight to courier booking</li>
             </ul>
             <Button href={cta.primary.href} arrow>{cta.primary.label}</Button>
           </div>
-          <div className="guard-vis">
+          <div className="guard-vis reveal d2">
             <AppWin title="zenbify / orders · flagged" label="Orders needing review with high risk, duplicate and call-in-progress statuses, using sample data" className="">
               <div className="a-title"><strong>Needs a look</strong><div className="a-tabs"><span className="on">Flagged<small>3</small></span><span>Calling<small>1</small></span></div></div>
               <OrdersTable n={4} riskOnly />
@@ -113,8 +111,8 @@ export default function Home() {
       {/* 5 · Profit */}
       <section className="sec on-paper" aria-labelledby="profit-title">
         <div className="wrap profit">
-          <ProfitApp />
-          <div>
+          <div className="reveal"><ProfitApp /></div>
+          <div className="reveal d2">
             <span className="label"><b>04</b> Profit view</span>
             <h2 className="h2" id="profit-title" style={{ margin: "22px 0 34px" }}>See what you <span className="serif-acc">actually earn.</span></h2>
             <ul className="defs">
@@ -136,21 +134,21 @@ export default function Home() {
             <ul className="theme-list">{themes.map((t) => <li key={t.name}>{t.name}<span>{t.vertical}</span></li>)}</ul>
             <div style={{ marginTop: 30 }}><Button href={cta.primary.href} arrow>Start your store</Button></div>
           </div>
-          <Storefronts />
+          <div className="reveal d2"><Storefronts /></div>
         </div>
       </section>
 
       {/* 7 · Integrations diagram */}
       <section className="sec on-paper-2" aria-labelledby="int-title">
         <div className="wrap">
-          <div className="sec-head two">
+          <div className="sec-head two reveal">
             <div style={{ display: "grid", gap: 22 }}>
               <span className="label"><b>06</b> Integrations</span>
               <h2 className="h2" id="int-title">Plugs into what you <span className="serif-acc">already use.</span></h2>
             </div>
             <p className="lead">Store platforms and social channels feed one dashboard. Local payments, couriers and tracking connect on the other side.</p>
           </div>
-          <div className="island"><Hub /></div>
+          <div className="island reveal"><Hub /></div>
         </div>
       </section>
 
@@ -169,6 +167,13 @@ export default function Home() {
           </div>
         </section>
       )}
+
+      {/* Manifesto: typography-led */}
+      <section className="sec on-dark manifesto" aria-label="Our focus">
+        <div className="wrap">
+          <ScrollWords text="Zenbify is an AI-powered commerce platform for the people building something of their own." accentFrom={9} />
+        </div>
+      </section>
 
       {/* 8 · Pricing */}
       <section className="sec on-paper" id="pricing" aria-labelledby="pricing-title">

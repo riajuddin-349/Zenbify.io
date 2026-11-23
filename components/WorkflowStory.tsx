@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 
 type Step = { step: string; title: string; text: string };
 
@@ -8,6 +8,24 @@ type Step = { step: string; title: string; text: string };
 export function WorkflowStory({ steps, panes }: { steps: Step[]; panes: ReactNode[] }) {
   const [i, setI] = useState(0);
   const id = useId();
+  const [auto, setAuto] = useState(false);
+  const wrap = useRef<HTMLDivElement>(null);
+  const STEP_MS = 6500;
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = wrap.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setAuto((a) => (e.isIntersecting ? a || !stopped.current : false)), { threshold: 0.45 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const stopped = useRef(false);
+  const stop = () => { stopped.current = true; setAuto(false); };
+  useEffect(() => {
+    if (!auto) return;
+    const t = setTimeout(() => setI((v) => (v + 1) % steps.length), STEP_MS);
+    return () => clearTimeout(t);
+  }, [auto, i, steps.length]);
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const onKey = (e: KeyboardEvent) => {
@@ -21,7 +39,7 @@ export function WorkflowStory({ steps, panes }: { steps: Step[]; panes: ReactNod
   };
 
   return (
-    <div className="story">
+    <div className="story" ref={wrap} onPointerDown={stop} onFocus={stop}>
       <div>
         <div className="story-nav" role="tablist" aria-label="How Zenbify works" onKeyDown={onKey}>
           {steps.map((s, n) => (
@@ -39,6 +57,7 @@ export function WorkflowStory({ steps, panes }: { steps: Step[]; panes: ReactNod
               <span className="n">0{n + 1}</span>
               <span className="t">{s.title}</span>
               <span className="d">{s.text}</span>
+              {auto && i === n && <span className="fill" style={{ animationDuration: `${STEP_MS}ms` }} aria-hidden="true" />}
             </button>
           ))}
         </div>

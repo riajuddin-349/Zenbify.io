@@ -35,3 +35,14 @@ Also confirm before launch: the payment partner list (bKash, Nagad, Stripe, SSLC
 
 ## Not included
 Bengali language version, live chat widget, contact form (no endpoint exists), blog or Learn content (links to the existing Zenbify Institute), legal pages (link to the existing ones). Product visuals are CSS illustrations labelled "Sample data"; replace with real screenshots when available.
+
+## Living layer (motion)
+
+- `LiveHero`: deterministic sample-data simulation (order arrives, AI call, confirmation, courier booking; every 3rd order held as a duplicate). Pauses off-screen, in a hidden tab, or via the Pause button. Static under `prefers-reduced-motion`.
+- `RevealInit` (scroll reveals, chart draw-on), `CountUp`, `ScrollWords` (manifesto), header scroll progress, workflow autoplay with per-step progress (stops on first interaction).
+- All motion is CSS/IntersectionObserver based, with no animation dependencies.
+
+## Not implemented here (needs info or code outside this repo)
+
+- Real pricing plans, trial length, WhatsApp number, response-time claim: add to `content/site.ts` (nothing is invented).
+- Bangla (`?lang=bn`) translations, signup-flow reduction and conversion tracking live in the app/backend and analytics setup, not in this marketing site.

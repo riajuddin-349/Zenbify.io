@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { RevealInit } from "@/components/RevealInit";
 
 const SITE = "https://zenbify.io";
 
@@ -18,12 +19,16 @@ export const viewport: Viewport = { themeColor: "#07100c", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body>
         <a href="#main" className="skip">Skip to content</a>
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <RevealInit />
       </body>
     </html>
   );
