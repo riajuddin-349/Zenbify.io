@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./visual-shop.css";
 import { Button } from "@/components/Button";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq, faqJsonLd } from "@/components/Faq";
