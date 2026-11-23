@@ -11,17 +11,17 @@ export const metadata: Metadata = {
 export default function Trust() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Trust and support</p>
-          <h1 className="h1" style={{ maxWidth: "20ch" }}>Know who you are working with.</h1>
-          <p className="lead" style={{ marginTop: 18 }}>How to reach us, and the policies that govern your account.</p>
+      <section className="phero on-dark">
+        <div className="wrap">
+          <span className="label"><b>●</b> Trust and support</span>
+          <h1 className="display">Know who you are <span className="serif" style={{ color: "var(--lime)" }}>working with.</span></h1>
+          <p className="lead">How to reach us, and the policies that govern your account.</p>
         </div>
       </section>
-      <section className="section-tight" style={{ padding: "24px 0 88px" }}>
-        <div className="container" style={{ display: "grid", gap: 40 }}>
-          <div>
-            <h2 className="h3" style={{ marginBottom: 14 }}>Contact</h2>
+      <section className="sec on-paper">
+        <div className="wrap" style={{ display: "grid", gap: 72 }}>
+          <div className="fsplit" style={{ alignItems: "start" }}>
+            <h2 className="h2">Contact</h2>
             <dl className="dl">
               <div><dt>Support hotline</dt><dd><a href={`tel:${HOTLINE}`}>{HOTLINE}</a></dd></div>
               <div><dt>Live chat</dt><dd>Available on the Zenbify website.</dd></div>
@@ -31,19 +31,17 @@ export default function Trust() {
               {company.address && <div><dt>Address</dt><dd>{company.address}</dd></div>}
             </dl>
           </div>
-          <div>
-            <h2 className="h3" style={{ marginBottom: 14 }}>Policies</h2>
-            <ul className="grid grid-3">
-              {legalLinks.map((l) => <li key={l.label} className="card"><a href={l.href} style={{ fontWeight: 650 }}>{l.label}</a></li>)}
-            </ul>
+          <div className="fsplit" style={{ alignItems: "start" }}>
+            <h2 className="h2">Policies</h2>
+            <div className="pol">{legalLinks.map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}</div>
           </div>
-          <div>
-            <h2 className="h3" style={{ marginBottom: 14 }}>Learn</h2>
-            <p className="muted">Step-by-step guides for setting up your store, orders and delivery are in the <a href={LEARN_URL} style={{ textDecoration: "underline" }}>Zenbify Institute</a>.</p>
+          <div className="fsplit" style={{ alignItems: "start" }}>
+            <h2 className="h2">Learn</h2>
+            <div className="pol"><a href={LEARN_URL}>Zenbify Institute: step-by-step guides</a></div>
           </div>
         </div>
       </section>
-      <CtaBand />
+      <CtaBand withApp={false} />
     </>
   );
 }

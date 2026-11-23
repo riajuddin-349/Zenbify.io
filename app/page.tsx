@@ -2,171 +2,167 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 import { CtaBand } from "@/components/CtaBand";
 import { Faq, faqJsonLd } from "@/components/Faq";
-import { IntegrationMatrix } from "@/components/IntegrationMatrix";
-import { OrderFlowMock, OrdersMock, ProfitMock } from "@/components/Mockups";
+import { Hub } from "@/components/Hub";
 import { Pricing } from "@/components/Pricing";
-import { SectionHead } from "@/components/SectionHead";
+import { WorkflowStory } from "@/components/WorkflowStory";
 import {
-  HOTLINE, cta, marketing, merchantStories, oldWay, themes, trial, workflow, legalLinks,
-} from "@/content/site";
-
-const themeColors = ["#3b3bd9", "#0f7b5f", "#b4541a", "#1d6fa5", "#6a8f1f", "#7a4f8c"];
+  AiCall, Chaos, CampaignPane, ConfirmPane, CourierPane, OneRecord, OrdersApp, OrdersTable, ProfitApp, Recovery, ShipCard, StoreBuilder, Storefronts, Toast, AppWin,
+} from "@/components/mocks";
+import { HOTLINE, LEARN_URL, cta, legalLinks, merchantStories, themes, trial, workflow } from "@/content/site";
 
 export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }} />
 
-      {/* 2. Hero */}
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="container hero-grid">
-          <div>
-            <p className="eyebrow">Your all-in-one AI commerce platform</p>
-            <h1 className="h1" id="hero-title">Confirm orders faster, cut fake ones, and see what you actually earn.</h1>
-            <p className="lead" style={{ marginTop: 20 }}>
-              Zenbify puts your store, AI order confirmation, courier booking and profit tracking in one dashboard, built for sellers in Bangladesh.
-            </p>
-            <div className="hero-actions">
-              <Button href={cta.primary.href}>{cta.primary.label}</Button>
-              <Button href={cta.secondary.href} variant="secondary">{cta.secondary.label}</Button>
+      {/* 1 · Hero: product-led composition */}
+      <section className="hero on-dark" aria-labelledby="hero-title">
+        <div className="wrap hero-grid">
+          <div className="hero-copy">
+            <span className="label"><b>●</b> Your all-in-one AI commerce platform</span>
+            <h1 className="display" id="hero-title">
+              Confirm orders faster, cut fake ones, and <span className="serif">see what you actually earn.</span>
+            </h1>
+            <p className="lead">Your store, AI order confirmation, courier booking and profit tracking in one dashboard. Built for sellers in Bangladesh.</p>
+            <div className="btn-row">
+              <Button href={cta.primary.href} arrow>{cta.primary.label}</Button>
+              <Button href={cta.secondary.href} variant="line">{cta.secondary.label}</Button>
             </div>
-            <p className="hero-note">
-              <span>{trial.note}</span>
-              <span>No coding required</span>
-              {trial.trialLength && <span>{trial.trialLength}</span>}
-            </p>
+            <p className="fine"><span>{trial.note}</span><span>No coding required</span>{trial.trialLength && <span>{trial.trialLength}</span>}</p>
           </div>
-          <OrderFlowMock />
+          <div className="stage">
+            <OrdersApp className="main" />
+            <AiCall className="fl call" />
+            <ShipCard className="fl ship" />
+            <Toast className="fl toast" />
+          </div>
         </div>
       </section>
 
-      {/* 3. Proof strip: factual partner names only */}
       <div className="strip">
-        <div className="container strip-in">
-          <span className="strip-label">Works with</span>
-          <ul className="strip-names">
-            {["bKash", "Pathao", "REDX", "Steadfast", "Shopify", "WooCommerce", "BigCommerce"].map((n) => <li key={n}>{n}</li>)}
-          </ul>
+        <div className="strip-in">
+          <span className="label">Works with</span>
+          <ul>{["bKash", "Pathao", "REDX", "Steadfast", "Shopify", "WooCommerce", "BigCommerce"].map((n) => <li key={n}><i />{n}</li>)}</ul>
         </div>
       </div>
 
-      {/* 4. Old way vs one dashboard */}
-      <section className="section" aria-labelledby="diff-title">
-        <div className="container">
-          <SectionHead eyebrow="The Zenbify difference" title={<span id="diff-title">Stop running your shop from six different tools.</span>} lead="Orders scatter across chats, sheets, couriers and payments. Zenbify brings them into one connected flow." />
-          <div className="compare">
-            <div className="card bad">
-              <h3 className="h3">The old way</h3>
-              <ul className="chip-list" style={{ margin: "14px 0 18px" }}>{oldWay.tools.map((t) => <li className="chip" key={t}>{t}</li>)}</ul>
-              <ul className="check-list" style={{ color: "var(--bad)" }}>
-                {oldWay.problems.map((p) => <li key={p} style={{ color: "var(--ink-2)" }}>{p}</li>)}
-              </ul>
+      {/* 2 · Old way → one record */}
+      <section className="sec on-paper" aria-labelledby="diff-title">
+        <div className="wrap">
+          <div className="sec-head two">
+            <div style={{ display: "grid", gap: 22 }}>
+              <span className="label"><b>01</b> The Zenbify difference</span>
+              <h2 className="h2" id="diff-title">One order shouldn’t live in <span className="serif-acc">six places.</span></h2>
             </div>
-            <div className="card good">
-              <h3 className="h3">One Zenbify dashboard</h3>
-              <ul className="check-list" style={{ marginTop: 18 }}>{oldWay.zenbify.map((p) => <li key={p}>{p}</li>)}</ul>
-            </div>
+            <p className="lead">Chats, inboxes, sheets, courier slips and payment messages become a single order record that moves from received to profit.</p>
+          </div>
+          <div className="c2o">
+            <Chaos />
+            <div className="joiner" aria-hidden="true" />
+            <OneRecord />
           </div>
         </div>
       </section>
 
-      {/* 5. Core workflow */}
-      <section className="section section-alt" id="workflow" aria-labelledby="wf-title">
-        <div className="container">
-          <SectionHead eyebrow="How it works" title={<span id="wf-title">One connected workflow, from store to profit.</span>} lead="Six steps that used to live in six places." />
-          <ol className="steps" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {workflow.map((w, i) => (
-              <li className="step" key={w.step}>
-                <span className="step-no">{i + 1}</span>
-                <p className="tag">{w.step}</p>
-                <h3>{w.title}</h3>
-                <p>{w.text}</p>
-              </li>
-            ))}
-          </ol>
-          <div className="hero-actions" style={{ marginTop: 36 }}>
-            <Button href={cta.primary.href}>{cta.primary.label}</Button>
-            <Button href="/features" variant="secondary">Explore all features</Button>
+      {/* 3 · Interactive workflow */}
+      <section className="sec on-paper-2" id="workflow" aria-labelledby="wf-title">
+        <div className="wrap">
+          <div className="sec-head two">
+            <div style={{ display: "grid", gap: 22 }}>
+              <span className="label"><b>02</b> How it works</span>
+              <h2 className="h2" id="wf-title">From store to profit, <span className="serif-acc">in one flow.</span></h2>
+            </div>
+            <p className="lead">Pick a step to see what you work with inside Zenbify.</p>
+          </div>
+          <WorkflowStory
+            steps={workflow}
+            panes={[<StoreBuilder key="s" />, <CampaignPane key="c" />, <div key="o"><OrdersApp label="Orders dashboard collecting every order in one place, using sample data" /></div>, <ConfirmPane key="f" />, <CourierPane key="d" />, <ProfitApp key="p" />]}
+          />
+          <div className="btn-row" style={{ marginTop: 44 }}>
+            <Button href={cta.primary.href} variant="ink" arrow>{cta.primary.label}</Button>
+            <Button href="/features" variant="line">Explore all features</Button>
           </div>
         </div>
       </section>
 
-      {/* 6. Differentiator */}
-      <section className="section" id="confirm" aria-labelledby="confirm-title">
-        <div className="container split">
+      {/* 4 · Fraud protection */}
+      <section className="sec on-dark" id="confirm" aria-labelledby="guard-title">
+        <div className="wrap guard">
           <div>
-            <p className="eyebrow">Order confirmation and fake-order protection</p>
-            <h2 className="h2" id="confirm-title">Confirm orders faster and cut fake ones.</h2>
-            <p className="lead" style={{ margin: "16px 0 24px" }}>Cash on delivery works best when you know which orders are real. Zenbify helps you decide before you ship.</p>
-            <ul className="check-list">
-              <li>Risky and duplicate order detection</li>
-              <li>AI calling to confirm orders with customers</li>
-              <li>Recovery of failed or cancelled orders</li>
-              <li>Courier booking from the same dashboard</li>
+            <span className="label"><b>03</b> Order confirmation and fake-order protection</span>
+            <h2 className="h2" id="guard-title" style={{ margin: "22px 0 0" }}>Know which orders are real <span className="serif-acc">before you ship.</span></h2>
+            <ul className="ticks">
+              <li><span>A</span>Risky and duplicate orders are flagged as they arrive</li>
+              <li><span>B</span>AI calling confirms the order with the customer</li>
+              <li><span>C</span>Failed or cancelled orders are followed up for recovery</li>
+              <li><span>D</span>Confirmed orders go straight to courier booking</li>
             </ul>
-            <div className="hero-actions"><Button href={cta.primary.href}>{cta.primary.label}</Button></div>
+            <Button href={cta.primary.href} arrow>{cta.primary.label}</Button>
           </div>
-          <OrdersMock />
+          <div className="guard-vis">
+            <AppWin title="zenbify / orders · flagged" label="Orders needing review with high risk, duplicate and call-in-progress statuses, using sample data" className="">
+              <div className="a-title"><strong>Needs a look</strong><div className="a-tabs"><span className="on">Flagged<small>3</small></span><span>Calling<small>1</small></span></div></div>
+              <OrdersTable n={4} riskOnly />
+            </AppWin>
+            <Recovery className="recover" />
+            <p className="gv-note">Interface illustration · sample data</p>
+          </div>
         </div>
       </section>
 
-      {/* 7. Store and themes */}
-      <section className="section section-alt" id="themes" aria-labelledby="themes-title">
-        <div className="container">
-          <SectionHead eyebrow="Store and themes" title={<span id="themes-title">Launch a store without a developer.</span>} lead="Pick a theme for your kind of business. All themes are labelled mobile ready." />
-          <ul className="grid grid-3">
-            {themes.map((t, i) => (
-              <li className="theme" key={t.name}>
-                <div className="theme-art" style={{ background: themeColors[i % themeColors.length] }} aria-hidden="true">{t.name}</div>
-                <div className="theme-meta">
-                  <div><strong>{t.name}</strong><br /><small>{t.vertical}</small></div>
-                  <span className="badge badge-good">Mobile ready</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <div className="hero-actions" style={{ marginTop: 32 }}><Button href={cta.primary.href}>Start your store</Button></div>
-        </div>
-      </section>
-
-      {/* 8. Marketing + 9. Profit */}
-      <section className="section" aria-labelledby="mkt-title">
-        <div className="container split">
+      {/* 5 · Profit */}
+      <section className="sec on-paper" aria-labelledby="profit-title">
+        <div className="wrap profit">
+          <ProfitApp />
           <div>
-            <p className="eyebrow">Marketing and AI creative</p>
-            <h2 className="h2" id="mkt-title">Turn a product into a campaign.</h2>
-            <ul className="check-list" style={{ marginTop: 24 }}>{marketing.map((m) => <li key={m}>{m}</li>)}</ul>
-            <div className="hero-actions"><Button href="/features" variant="secondary">See marketing features</Button></div>
+            <span className="label"><b>04</b> Profit view</span>
+            <h2 className="h2" id="profit-title" style={{ margin: "22px 0 34px" }}>See what you <span className="serif-acc">actually earn.</span></h2>
+            <ul className="defs">
+              <li><b>Revenue</b><span>What came in from confirmed orders.</span></li>
+              <li><b>Costs</b><span>Product, delivery and the rest, in the same view.</span></li>
+              <li><b>Net profit</b><span>The number that decides what to reorder, promote or drop.</span></li>
+            </ul>
           </div>
+        </div>
+      </section>
+
+      {/* 6 · Storefront themes */}
+      <section className="sec on-dark-2" id="themes" aria-labelledby="themes-title">
+        <div className="wrap themes">
           <div>
-            <p className="eyebrow">Profit view</p>
-            <h2 className="h2" style={{ marginBottom: 22 }}>See what you actually earn.</h2>
-            <ProfitMock />
+            <span className="label"><b>05</b> Store and themes</span>
+            <h2 className="h2" id="themes-title" style={{ margin: "22px 0 18px" }}>Launch a store <span className="serif-acc">without a developer.</span></h2>
+            <p className="lead">Pick a theme for your kind of business. Every theme is mobile ready.</p>
+            <ul className="theme-list">{themes.map((t) => <li key={t.name}>{t.name}<span>{t.vertical}</span></li>)}</ul>
+            <div style={{ marginTop: 30 }}><Button href={cta.primary.href} arrow>Start your store</Button></div>
           </div>
+          <Storefronts />
         </div>
       </section>
 
-      {/* 10. Integrations */}
-      <section className="section section-alt" aria-labelledby="int-title">
-        <div className="container">
-          <SectionHead eyebrow="Integrations" title={<span id="int-title">Works with the tools and partners you already use.</span>} lead="Store platforms, local payments, couriers and tracking, connected to one dashboard." />
-          <IntegrationMatrix />
+      {/* 7 · Integrations diagram */}
+      <section className="sec on-paper-2" aria-labelledby="int-title">
+        <div className="wrap">
+          <div className="sec-head two">
+            <div style={{ display: "grid", gap: 22 }}>
+              <span className="label"><b>06</b> Integrations</span>
+              <h2 className="h2" id="int-title">Plugs into what you <span className="serif-acc">already use.</span></h2>
+            </div>
+            <p className="lead">Store platforms and social channels feed one dashboard. Local payments, couriers and tracking connect on the other side.</p>
+          </div>
+          <div className="island"><Hub /></div>
         </div>
       </section>
 
-      {/* 11. Merchant stories: only rendered with real, permissioned data */}
       {merchantStories.length > 0 && (
-        <section className="section" aria-labelledby="stories-title">
-          <div className="container">
-            <SectionHead eyebrow="Merchant stories" title={<span id="stories-title">Sellers using Zenbify.</span>} />
-            <div className="grid grid-3">
+        <section className="sec on-paper" aria-labelledby="stories-title">
+          <div className="wrap">
+            <h2 className="h2" id="stories-title" style={{ marginBottom: 40 }}>Sellers using Zenbify</h2>
+            <div className="merch">
               {merchantStories.map((s) => (
-                <figure className="card" key={s.name} style={{ margin: 0 }}>
-                  <blockquote style={{ margin: 0 }}><p>“{s.quote}”</p></blockquote>
-                  <figcaption style={{ marginTop: 14, fontWeight: 650 }}>
-                    {s.name}, {s.storeUrl ? <a href={s.storeUrl} rel="noopener">{s.store}</a> : s.store}
-                    {s.result && <span className="muted" style={{ display: "block", fontWeight: 400 }}>{s.result}</span>}
-                  </figcaption>
+                <figure key={s.name}>
+                  <blockquote><p>“{s.quote}”</p></blockquote>
+                  <figcaption><b>{s.name}</b>, {s.storeUrl ? <a href={s.storeUrl} rel="noopener">{s.store}</a> : s.store}{s.result && <span className="mut" style={{ display: "block" }}>{s.result}</span>}</figcaption>
                 </figure>
               ))}
             </div>
@@ -174,35 +170,50 @@ export default function Home() {
         </section>
       )}
 
-      {/* 12. Pricing */}
-      <section className="section" id="pricing" aria-labelledby="pricing-title">
-        <div className="container">
-          <SectionHead eyebrow="Pricing" title={<span id="pricing-title">Big ambitions. A plan that fits.</span>} lead="Start free. No credit card required." />
+      {/* 8 · Pricing */}
+      <section className="sec on-paper" id="pricing" aria-labelledby="pricing-title">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="label"><b>07</b> Pricing</span>
+            <h2 className="h2" id="pricing-title">Big ambitions. <span className="serif-acc">A plan that fits.</span></h2>
+          </div>
           <Pricing />
         </div>
       </section>
 
-      {/* 13. Trust and support */}
-      <section className="section section-alt" aria-labelledby="trust-title">
-        <div className="container">
-          <SectionHead eyebrow="Trust and support" title={<span id="trust-title">Support you can reach when something needs fixing.</span>} lead="Support, policies and learning guides are one click away." />
-          <div className="grid grid-3">
-            <div className="card"><h3 className="h3">Talk to us</h3><p>Hotline <a href={`tel:${HOTLINE}`}><strong>{HOTLINE}</strong></a>, plus live chat on the site.</p></div>
-            <div className="card"><h3 className="h3">Clear policies</h3><p>Terms, privacy, refund, cookie and acceptable-use policies are published. <Link href="/trust" style={{ textDecoration: "underline" }}>See trust and support</Link>.</p></div>
-            <div className="card"><h3 className="h3">Learn at your pace</h3><p>Step-by-step guides for launching your store, taking orders and setting up delivery in the Zenbify Institute.</p></div>
+      {/* 9 · Trust and support */}
+      <section className="sec on-dark" aria-labelledby="trust-title">
+        <div className="wrap">
+          <div className="trustbar">
+            <div>
+              <span className="label"><b>08</b> Trust and support</span>
+              <h2 className="h2" id="trust-title" style={{ marginTop: 22 }}>Support you can <span className="serif-acc">actually reach.</span></h2>
+            </div>
+            <div>
+              <p className="mut">Support hotline</p>
+              <a className="hot" href={`tel:${HOTLINE}`}>{HOTLINE}</a>
+              <p className="mut">Live chat is on the site too.</p>
+            </div>
+          </div>
+          <div className="trust3">
+            <div><b>Published policies</b><span>Terms, privacy, refund, cookie and acceptable-use policies.</span><div className="linklist">{legalLinks.slice(0, 3).map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}<Link href="/trust">All</Link></div></div>
+            <div><b>Learn at your pace</b><span>Step-by-step guides for your store, orders and delivery.</span><div className="linklist"><a href={LEARN_URL}>Zenbify Institute</a></div></div>
+            <div><b>Talk to a person</b><span>Ask about storefronts, payments, automation or plans.</span><div className="linklist"><Link href="/contact-us">Contact us</Link></div></div>
           </div>
         </div>
       </section>
 
-      {/* 14. FAQ */}
-      <section className="section" id="faq" aria-labelledby="faq-title">
-        <div className="container" style={{ maxWidth: 860 }}>
-          <SectionHead eyebrow="FAQ" title={<span id="faq-title">Questions sellers ask before they start.</span>} />
+      {/* 10 · FAQ */}
+      <section className="sec on-paper-2" id="faq" aria-labelledby="faq-title">
+        <div className="wrap faqgrid">
+          <div className="sticky">
+            <span className="label"><b>09</b> FAQ</span>
+            <h2 className="h2" id="faq-title" style={{ marginTop: 22 }}>Before you <span className="serif-acc">start.</span></h2>
+          </div>
           <Faq />
         </div>
       </section>
 
-      {/* 15. Final CTA */}
       <CtaBand />
     </>
   );
