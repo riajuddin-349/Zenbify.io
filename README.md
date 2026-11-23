@@ -13,6 +13,10 @@ npm run typecheck
 npm run build && npm start
 ```
 
+## Design
+
+Dark ink and warm paper surfaces with a single lime accent; Geist, Geist Mono and Instrument Serif (self-hosted via `@fontsource`, no network at build). Product storytelling is built from interface illustrations in `components/mocks.tsx` (orders, AI call, courier, profit, storefronts) and an interactive workflow in `components/WorkflowStory.tsx`. All mock data is sample data and labelled as such.
+
 ## Where to edit
 
 All copy, links and facts live in `content/site.ts`. Reusable UI is in `components/`.

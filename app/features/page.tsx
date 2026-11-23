@@ -1,44 +1,49 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { CtaBand } from "@/components/CtaBand";
-import { SectionHead } from "@/components/SectionHead";
+import { AiCall, CampaignPane, CourierPane, OrdersApp, ProfitApp, StoreBuilder } from "@/components/mocks";
 import { cta, pillars } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Features",
-  description: "Everything you need to run your business: order confirmation, courier booking, store building, marketing and profit tracking in Zenbify.",
+  description: "Order confirmation, courier booking, store building, marketing and profit tracking in Zenbify, grouped by the job you are trying to do.",
   alternates: { canonical: "/features" },
+};
+
+const visuals: Record<string, React.ReactNode> = {
+  confirm: <div style={{ display: "grid", gap: 12 }}><OrdersApp label="Orders dashboard with confirmation statuses, using sample data" /><AiCall /></div>,
+  ship: <CourierPane />,
+  grow: <div style={{ display: "grid", gap: 12 }}><StoreBuilder /><CampaignPane /></div>,
+  know: <ProfitApp />,
 };
 
 export default function Features() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Features</p>
-          <h1 className="h1" style={{ maxWidth: "18ch" }}>Everything you need to run your business.</h1>
-          <p className="lead" style={{ marginTop: 18 }}>From building your store to marketing, orders, delivery and automation. Grouped by the job you are trying to do.</p>
-          <nav aria-label="Feature groups" className="chip-list" style={{ marginTop: 26 }}>
-            {pillars.map((p) => <a key={p.id} className="chip" href={`#${p.id}`} style={{ textDecoration: "none" }}>{p.title}</a>)}
-          </nav>
+      <section className="phero on-dark">
+        <div className="wrap">
+          <span className="label"><b>●</b> Features</span>
+          <h1 className="display">Everything you need to <span className="serif" style={{ color: "var(--lime)" }}>run your business.</span></h1>
+          <p className="lead">From building your store to marketing, orders, delivery and automation, grouped by the job you are trying to do.</p>
+          <nav className="jump" aria-label="Feature groups">{pillars.map((p) => <a key={p.id} href={`#${p.id}`}>{p.title}</a>)}</nav>
         </div>
       </section>
       {pillars.map((p, i) => (
-        <section key={p.id} id={p.id} className={`section-tight${i % 2 ? " section-alt" : ""}`} aria-labelledby={`${p.id}-t`} style={{ padding: "64px 0" }}>
-          <div className="container">
-            <SectionHead eyebrow={p.title} title={<span id={`${p.id}-t`}>{p.lead}</span>} />
-            <ul className="grid grid-3">
-              {p.features.map((f) => (
-                <li className="card" key={f}><h3 className="h3" style={{ marginBottom: 0 }}>{f}</h3></li>
-              ))}
-            </ul>
+        <section key={p.id} id={p.id} className={`fsec ${i % 2 ? "on-paper-2" : "on-paper"}`} aria-labelledby={`${p.id}-t`}>
+          <div className={`wrap fsplit${i % 2 ? " flip" : ""}`}>
+            <div>
+              <span className="label"><b>0{i + 1}</b> {p.title}</span>
+              <h2 className="h2" id={`${p.id}-t`} style={{ marginTop: 22 }}>{p.lead}</h2>
+              <ul className="flist">{p.features.map((f, n) => <li key={f}><span>{String(n + 1).padStart(2, "0")}</span>{f}</li>)}</ul>
+            </div>
+            <div>{visuals[p.id]}</div>
           </div>
         </section>
       ))}
-      <section className="section-tight" style={{ padding: "56px 0" }}>
-        <div className="container hero-actions"><Button href={cta.primary.href}>{cta.primary.label}</Button><Button href="/pricing" variant="secondary">View pricing</Button></div>
+      <section className="fsec on-paper">
+        <div className="wrap btn-row"><Button href={cta.primary.href} variant="ink" arrow>{cta.primary.label}</Button><Button href="/pricing" variant="line">View pricing</Button></div>
       </section>
-      <CtaBand />
+      <CtaBand withApp={false} />
     </>
   );
 }
