@@ -146,6 +146,11 @@ export function LiveHero() {
         </div>
       </AppWin>
 
+      <figure className="hero-phone" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/img/phone-tracking.webp" width={780} height={1688} alt="" decoding="async" />
+      </figure>
+
       <div className="live-cap">
         <span className={`dot${running ? " on" : ""}`} aria-hidden="true" />
         <span>{reduced ? "Interface illustration" : "Live simulation"} · sample data</span>

@@ -1,4 +1,5 @@
 import { integrations } from "@/content/site";
+import { Brand } from "./Brand";
 import { LogoMark } from "./Logo";
 
 const left = ["Store platforms", "Social channels"];
@@ -10,7 +11,7 @@ function Group({ g }: { g: (typeof integrations)[number] }) {
       <p className="label">{g.group}</p>
       <ul className="chips">
         {g.items.map((i) => (
-          <li key={i.name}>{i.name}{i.status && <em>{i.status}</em>}</li>
+          <li key={i.name}><Brand name={i.name} />{i.status && <em>{i.status}</em>}</li>
         ))}
       </ul>
     </div>

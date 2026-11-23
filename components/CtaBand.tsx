@@ -1,6 +1,6 @@
 import { cta, trial } from "@/content/site";
 import { Button } from "./Button";
-import { OrdersApp } from "./mocks";
+import { Laptop, Phone } from "./Device";
 
 export function CtaBand({ withApp = true }: { withApp?: boolean }) {
   return (
@@ -12,7 +12,12 @@ export function CtaBand({ withApp = true }: { withApp?: boolean }) {
           <div className="btn-row"><Button href={cta.primary.href} arrow>{cta.primary.label}</Button><Button href="/pricing" variant="line">View pricing</Button></div>
           <p className="fine"><span>{trial.note}</span>{trial.trialLength && <span>{trial.trialLength}</span>}</p>
         </div>
-        {withApp && <OrdersApp className="main" />}
+        {withApp && (
+          <div className="cta-devs">
+            <Laptop src="/img/dashboard-profit.webp" w={2880} h={1800} alt="Zenbify profit dashboard with revenue, costs and net profit, using sample data" />
+            <Phone className="p-a" src="/img/phone-tracking.webp" w={780} h={1688} alt="Customer tracking page on a phone, using sample data" />
+          </div>
+        )}
       </div>
     </section>
   );

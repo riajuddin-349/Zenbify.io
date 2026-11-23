@@ -6,10 +6,13 @@ import { Hub } from "@/components/Hub";
 import { Pricing } from "@/components/Pricing";
 import { LiveHero } from "@/components/LiveHero";
 import { Icon } from "@/components/Icon";
+import { Laptop, Phone } from "@/components/Device";
+import { Brand } from "@/components/Brand";
+import { ProcessFlow } from "@/components/ProcessFlow";
 import { ScrollWords } from "@/components/ScrollWords";
 import { WorkflowStory } from "@/components/WorkflowStory";
 import {
-  Chaos, CampaignPane, ConfirmPane, CourierPane, OneRecord, OrdersApp, OrdersTable, ProfitApp, Recovery, StoreBuilder, Storefronts, AppWin,
+  Chaos, CampaignPane, ConfirmPane, CourierPane, OneRecord, OrdersApp, OrdersTable, ProfitApp, Recovery, StoreBuilder, AppWin,
 } from "@/components/mocks";
 import { HOTLINE, LEARN_URL, cta, legalLinks, merchantStories, themes, trial, workflow } from "@/content/site";
 
@@ -40,9 +43,33 @@ export default function Home() {
       <div className="strip">
         <div className="strip-in">
           <span className="label">Works with</span>
-          <ul>{["bKash", "Pathao", "REDX", "Steadfast", "Shopify", "WooCommerce", "BigCommerce"].map((n) => <li key={n}><i />{n}</li>)}</ul>
+          <ul>{["bKash", "Pathao", "REDX", "Steadfast", "Shopify", "WooCommerce", "BigCommerce"].map((n) => <li key={n}><i /><Brand name={n} /></li>)}</ul>
         </div>
       </div>
+
+      {/* Product showcase: devices + order-to-courier flow */}
+      <section className="sec on-paper-2 showcase" aria-labelledby="show-title">
+        <div className="wrap">
+          <div className="sec-head two reveal">
+            <div style={{ display: "grid", gap: 22 }}>
+              <span className="label"><b>●</b> Inside the product</span>
+              <h2 className="h2" id="show-title">One order, from the first message <span className="serif-acc">to the doorstep.</span></h2>
+            </div>
+            <p className="lead">Orders, AI confirmation calls and courier booking sit in the same dashboard. Customers follow delivery on a tracking page.</p>
+          </div>
+          <div className="island stagebig reveal">
+            <ol className="miniflow" aria-label="Order flow">
+              <li><b>1</b>Order arrives</li><li><b>2</b>AI confirms</li><li><b>3</b>Courier booked</li><li><b>4</b>Customer tracks</li>
+            </ol>
+            <div className="devs">
+              <Laptop src="/img/dashboard-orders.webp" w={2880} h={1800} alt="Zenbify orders dashboard showing sample orders with confirmed, calling, duplicate and high-risk statuses, an AI call and courier booking" />
+              <Phone className="p-a" src="/img/phone-tracking.webp" w={780} h={1688} alt="Customer tracking page on a phone with a delivery map and timeline, using sample data" />
+              <Phone className="p-b" src="/img/phone-orders.webp" w={780} h={1688} alt="Orders list on a phone with confirmed and flagged orders, using sample data" />
+            </div>
+            <p className="gv-note">Interface illustration · sample data</p>
+          </div>
+        </div>
+      </section>
 
       {/* 2 · Old way → one record */}
       <section className="sec on-paper" aria-labelledby="diff-title">
@@ -72,6 +99,7 @@ export default function Home() {
             </div>
             <p className="lead">Pick a step to see what you work with inside Zenbify.</p>
           </div>
+          <ProcessFlow />
           <WorkflowStory
             steps={workflow}
             panes={[<StoreBuilder key="s" />, <CampaignPane key="c" />, <div key="o"><OrdersApp label="Orders dashboard collecting every order in one place, using sample data" /></div>, <ConfirmPane key="f" />, <CourierPane key="d" />, <ProfitApp key="p" />]}
@@ -134,7 +162,7 @@ export default function Home() {
             <ul className="theme-list">{themes.map((t) => <li key={t.name}>{t.name}<span>{t.vertical}</span></li>)}</ul>
             <div style={{ marginTop: 30 }}><Button href={cta.primary.href} arrow>Start your store</Button></div>
           </div>
-          <div className="reveal d2"><Storefronts /></div>
+          <div className="reveal d2"><Laptop src="/img/storefront.webp" w={2880} h={1800} alt="Sample storefront built with a Zenbify theme, with a hero banner and product grid" /></div>
         </div>
       </section>
 
@@ -172,6 +200,11 @@ export default function Home() {
       <section className="sec on-dark manifesto" aria-label="Our focus">
         <div className="wrap">
           <ScrollWords text="Zenbify is an AI-powered commerce platform for the people building something of their own." accentFrom={9} />
+          <div className="peek reveal" aria-hidden="false">
+            <Phone src="/img/phone-orders.webp" w={780} h={1688} alt="Orders list on a phone, using sample data" />
+            <div className="pk-wide"><img src="/img/dashboard-profit.webp" width={2880} height={1800} loading="lazy" decoding="async" alt="Profit dashboard, using sample data" /></div>
+            <Phone src="/img/phone-tracking.webp" w={780} h={1688} alt="Customer tracking page on a phone, using sample data" />
+          </div>
         </div>
       </section>
 

@@ -46,3 +46,10 @@ Bengali language version, live chat widget, contact form (no endpoint exists), b
 
 - Real pricing plans, trial length, WhatsApp number, response-time claim: add to `content/site.ts` (nothing is invented).
 - Bangla (`?lang=bn`) translations, signup-flow reduction and conversion tracking live in the app/backend and analytics setup, not in this marketing site.
+
+## Visual assets
+
+- `public/img/*.webp`: product screens (orders dashboard, profit dashboard, phone orders, customer tracking page, storefront), rendered from `app/capture/page.tsx` at 2x and compressed. Regenerate with `CAPTURE=1 npm run build && CAPTURE=1 npm start`, then `npm run assets` (needs Playwright + Pillow). In a normal build `/capture` is a 404.
+- All screens are labelled sample data. They are interface illustrations built from the capabilities described on zenbify.io, not captures of the live app. Replace them with real app screenshots of the same names when available.
+- Brand marks: put licensed files in `public/logos/<slug>.svg` (see README there); `Brand` renders them automatically.
+- Not included because no verified source exists: contextual photography, customer logos, testimonials.

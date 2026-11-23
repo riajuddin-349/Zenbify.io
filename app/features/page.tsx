@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { CtaBand } from "@/components/CtaBand";
-import { AiCall, CampaignPane, CourierPane, OrdersApp, ProfitApp, StoreBuilder } from "@/components/mocks";
+import { Laptop, Phone, Scene } from "@/components/Device";
+import { AiCall, CampaignPane, ShipCard } from "@/components/mocks";
 import { cta, pillars } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -11,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const visuals: Record<string, React.ReactNode> = {
-  confirm: <div style={{ display: "grid", gap: 12 }}><OrdersApp label="Orders dashboard with confirmation statuses, using sample data" /><AiCall /></div>,
-  ship: <CourierPane />,
-  grow: <div style={{ display: "grid", gap: 12 }}><StoreBuilder /><CampaignPane /></div>,
-  know: <ProfitApp />,
+  confirm: <Scene float={<AiCall />}><Laptop src="/img/dashboard-orders.webp" w={2880} h={1800} alt="Orders dashboard with confirmation statuses, using sample data" /></Scene>,
+  ship: <Scene float={<ShipCard />} className="phone-lead"><Phone src="/img/phone-tracking.webp" w={780} h={1688} alt="Customer tracking page with delivery map and timeline, using sample data" /></Scene>,
+  grow: <Scene float={<CampaignPane />}><Laptop src="/img/storefront.webp" w={2880} h={1800} alt="Sample storefront built with a Zenbify theme" /></Scene>,
+  know: <Scene float={<Phone src="/img/phone-orders.webp" w={780} h={1688} alt="Orders list on a phone, using sample data" className="small" />}><Laptop src="/img/dashboard-profit.webp" w={2880} h={1800} alt="Profit dashboard with revenue, costs and net profit, using sample data" /></Scene>,
 };
 
 export default function Features() {
