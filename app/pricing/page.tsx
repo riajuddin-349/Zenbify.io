@@ -17,7 +17,7 @@ export default function PricingPage() {
       <section className="phero on-dark">
         <div className="wrap">
           <span className="label"><b>●</b> Pricing</span>
-          <h1 className="display">Big ambitions. <span className="serif" style={{ color: "var(--lime)" }}>A plan that fits.</span></h1>
+          <h1 className="display">Big ambitions. <span className="serif">A plan that fits.</span></h1>
           <p className="lead">Start free. No credit card required.</p>
         </div>
       </section>

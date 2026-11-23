@@ -14,7 +14,7 @@ export default function Contact() {
       <section className="phero on-dark">
         <div className="wrap">
           <span className="label"><b>●</b> Contact us</span>
-          <h1 className="display">Talk to the <span className="serif" style={{ color: "var(--lime)" }}>Zenbify team.</span></h1>
+          <h1 className="display">Talk to the <span className="serif">Zenbify team.</span></h1>
           <p className="lead">Ask about storefronts, payments, automation or which plan fits your store.</p>
         </div>
       </section>

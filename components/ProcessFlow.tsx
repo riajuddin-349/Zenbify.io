@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { workflow } from "@/content/site";
 
 const S = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
-const A = "var(--lime)";
+const A = "#c9f26b";
 
 /** Illustrated stations, drawn for each workflow step. */
 const art: ReactNode[] = [

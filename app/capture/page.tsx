@@ -74,7 +74,7 @@ function DashLight() {
             ))}
           </div>
           <div className="cx-right">
-            <div className="card-a dkc">
+            <div className="card-a">
               <div className="a-title"><span className="pill call">Live call</span><span className="mono">00:18</span></div>
               <Wave />
               <div className="chat"><div className="bubble">Hello Jui, you ordered a linen shirt, ৳1,750 cash on delivery. Shall we confirm?</div><div className="bubble me">Yes, please confirm.</div></div>
@@ -98,7 +98,7 @@ function DashLight() {
 
 function DashDark() {
   return (
-    <div className="app dk cx" id="s-profit" style={{ width: 1440, height: 900 }}>
+    <div className="app cx" id="s-profit" style={{ width: 1440, height: 900 }}>
       <Side active="Profit" />
       <div className="cx-main">
         <Top title="Profit" sub="Last 12 weeks" />

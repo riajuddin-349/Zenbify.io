@@ -22,7 +22,7 @@ export default function About() {
       <section className="phero on-dark">
         <div className="wrap">
           <span className="label"><b>●</b> About Zenbify</span>
-          <h1 className="display" style={{ maxWidth: "18ch" }}>Behind every store is someone <span className="serif" style={{ color: "var(--lime)" }}>building something of their own.</span></h1>
+          <h1 className="display" style={{ maxWidth: "18ch" }}>Behind every store is someone <span className="serif">building something of their own.</span></h1>
         </div>
       </section>
       <section className="sec on-paper">

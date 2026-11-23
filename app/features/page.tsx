@@ -24,7 +24,7 @@ export default function Features() {
       <section className="phero on-dark">
         <div className="wrap">
           <span className="label"><b>●</b> Features</span>
-          <h1 className="display">Everything you need to <span className="serif" style={{ color: "var(--lime)" }}>run your business.</span></h1>
+          <h1 className="display">Everything you need to <span className="serif">run your business.</span></h1>
           <p className="lead">From building your store to marketing, orders, delivery and automation, grouped by the job you are trying to do.</p>
           <nav className="jump" aria-label="Feature groups">{pillars.map((p) => <a key={p.id} href={`#${p.id}`}>{p.title}</a>)}</nav>
         </div>

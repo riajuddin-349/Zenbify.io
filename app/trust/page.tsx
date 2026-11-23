@@ -14,7 +14,7 @@ export default function Trust() {
       <section className="phero on-dark">
         <div className="wrap">
           <span className="label"><b>●</b> Trust and support</span>
-          <h1 className="display">Know who you are <span className="serif" style={{ color: "var(--lime)" }}>working with.</span></h1>
+          <h1 className="display">Know who you are <span className="serif">working with.</span></h1>
           <p className="lead">How to reach us, and the policies that govern your account.</p>
         </div>
       </section>

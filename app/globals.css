@@ -685,3 +685,80 @@ button { font: inherit; color: inherit; }
   .hero-phone { display: block; position: absolute; z-index: 4; width: 168px; right: 190px; bottom: 30px; margin: 0; padding: 6px; background: #0a0f0c; border: 1px solid #2a3a31; border-radius: 30px; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .55)); animation: rise 1s .7s cubic-bezier(.2,.7,.2,1) both; }
   .hero-phone img { display: block; width: 100%; height: auto; border-radius: 24px; }
 }
+
+/* ═════════ LIGHT THEME (Shopify-style: white, airy, product-led) ═════════
+   Appended last so it wins the cascade. Sections keep their class names. */
+:root { --paper: #ffffff; --paper-2: #f6f6f1; --paper-line: #e6e7e0; --g: #2f5a00; --hair: #e6e7e0; }
+body { background: #fff; color: #0b1410; }
+:focus-visible, .on-paper :focus-visible { outline-color: #0b1410; }
+.on-dark, .on-paper { --fg: #0b1410; --mut: #55605a; --ln: var(--hair); background: #fff; color: var(--fg); }
+.on-dark-2, .on-paper-2 { --fg: #0b1410; --mut: #55605a; --ln: var(--hair); background: #f6f6f1; color: var(--fg); }
+.label b, .on-paper .label b, .on-paper-2 .label b { color: var(--g); }
+.serif-acc, .on-dark .serif-acc, .on-dark-2 .serif-acc, .hero-copy .display .serif, .display .serif { color: var(--g); }
+.fine span::before { color: var(--g); }
+
+/* buttons */
+.btn-primary { background: #0b1410; color: #fff; }
+.btn-primary:hover { background: #1c2a22; box-shadow: 0 12px 26px -12px rgba(11, 20, 16, .55); }
+.btn-ink { background: #0b1410; color: #fff; }
+.btn-line { border-color: #cfd3ca; color: #0b1410; }
+.btn-line:hover { border-color: #0b1410; background: #fff; }
+.btn-ghost { color: #0b1410; } .btn-ghost:hover { background: rgba(11, 20, 16, .06); }
+.skip { background: #0b1410; color: #fff; }
+
+/* header */
+.header { background: rgba(255, 255, 255, .86); border-bottom: 1px solid var(--hair); }
+.header.scrolled { background: rgba(255, 255, 255, .96); box-shadow: 0 10px 30px -20px rgba(11, 20, 16, .35); }
+.logo { color: #0b1410; }
+.nav-d a { color: #3a443f; } .nav-d a:hover, .nav-d a[aria-current="page"] { color: #0b1410; background: rgba(11, 20, 16, .05); }
+.nav-d a::after, .header .progress { background: var(--g); }
+.menu-btn { border-color: #d8dbd2; color: #0b1410; }
+.mpanel { background: #fff; border-top-color: var(--hair); } .mpanel a.ml { border-bottom-color: var(--hair); }
+
+/* hero + page heroes */
+.hero::before, .phero::before { background-image: linear-gradient(#eceee7 1px, transparent 1px), linear-gradient(90deg, #eceee7 1px, transparent 1px); opacity: .9; }
+.hero::after { background: radial-gradient(closest-side, rgba(201, 242, 107, .38), transparent); }
+.phero { border-bottom-color: var(--hair); }
+.hero-copy .display { letter-spacing: -0.05em; font-weight: 600; }
+.strip { background: #fff; border-color: var(--hair); }
+.strip ul { color: #1c2a22; } .strip ul li i { background: var(--g); }
+.jump a { border-color: #d8dbd2; color: #2b362f; } .jump a:hover { border-color: #0b1410; color: #0b1410; }
+
+/* live caption, captions */
+.live-cap .dot.on { background: var(--g); } .live-cap button { border-color: #d8dbd2; color: #0b1410; } .live-cap button:hover { border-color: #0b1410; color: #0b1410; }
+.vp-cap, .gv-note { color: #7b857f; }
+
+/* workflow stage becomes a soft panel */
+.viewport { background: #eef0e8; border: 1px solid var(--hair); }
+.tab .fill, .on-paper-2 .tab .fill { background: var(--g); }
+
+/* lists */
+.ticks li span { color: var(--g); border-color: #d8dbd2; } .ticks li:hover span { background: #0b1410; color: #fff; }
+.theme-list, .theme-list li { border-color: var(--hair); } .theme-list li:hover { color: var(--g); }
+
+/* integrations island */
+.island { --fg: #0b1410; --mut: #55605a; --ln: var(--hair); background: #f6f6f1; color: #0b1410; border: 1px solid var(--hair); }
+.island::before { background-image: radial-gradient(rgba(11, 20, 16, .12) 1px, transparent 1.2px); }
+.group { background: #fff; border-color: var(--hair); }
+.chips li { background: #fff; border-color: #dfe2d9; color: #0b1410; } .chips li em { color: var(--g); }
+.hcol.l .group::after, .hcol.r .group::before { background: repeating-linear-gradient(90deg, #7aa22a 0 5px, transparent 5px 10px); }
+.core-box { box-shadow: 0 0 0 10px rgba(201, 242, 107, .25), 0 0 0 22px rgba(201, 242, 107, .12); }
+.miniflow li { border-color: #dfe2d9; color: #2b362f; background: #fff; }
+
+/* manifesto */
+.js .sw span { color: #cfd3ca; } .js .sw span.lit { color: #0b1410; }
+.sw span.acc, .js .sw span.acc.lit { color: var(--g); }
+
+/* contact hotline, pricing dark plan stays dark */
+.hot { color: var(--g); }
+
+/* final CTA: soft lime panel */
+.cta { background: #eef6d6; } .cta::before { background: none; }
+.cta .display { color: #0b1410; }
+
+/* footer */
+.footer { background: #f6f6f1; border-top: 1px solid var(--hair); color: #4a554e; }
+.footer a:hover { color: #0b1410; } .footer h4 { color: #7b857f; } .fbot { border-top-color: var(--hair); }
+.fbig { -webkit-text-stroke: 1px #d6dad0; }
+
+@media (prefers-reduced-motion: reduce) { .js .sw span { color: #0b1410; } .js .sw span.acc { color: var(--g); } }

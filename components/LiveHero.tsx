@@ -106,7 +106,7 @@ export function LiveHero() {
         </div>
       </AppWin>
 
-      <AppWin title="AI confirmation call" dk className="fl call" label="AI confirmation call card with sample transcript">
+      <AppWin title="AI confirmation call" className="fl call" label="AI confirmation call card with sample transcript">
         <div className="a-title">
           {flag && phase >= 1 ? <span className="pill risk">Not called</span> : calling ? <span className="pill call">Live call</span> : done ? <span className="pill ok">Call complete</span> : <span className="pill wait">Queued</span>}
           <span className="mono" style={{ color: "var(--a-mut)", fontSize: 11 }}>{calling ? "00:07" : done ? "00:18" : "00:00"}</span>

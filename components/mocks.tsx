@@ -96,7 +96,7 @@ export function OrdersApp({ label = "Orders dashboard with confirmation, duplica
 
 export function AiCall({ className = "" }: { className?: string }) {
   return (
-    <AppWin title="AI confirmation call" dk className={className} label="AI confirmation call card with sample transcript">
+    <AppWin title="AI confirmation call" className={className} label="AI confirmation call card with sample transcript">
       <div className="a-title"><span className="pill call">Live call</span><span className="mono" style={{ color: "var(--a-mut)", fontSize: 11 }}>00:18</span></div>
       <Wave />
       <div className="chat">
@@ -234,7 +234,7 @@ export function ProfitChart() {
 
 export function ProfitApp() {
   return (
-    <AppWin title="zenbify / profit" dk label="Profit dashboard with revenue, costs, net profit, trend chart and top products, using sample data">
+    <AppWin title="zenbify / profit" label="Profit dashboard with revenue, costs, net profit, trend chart and top products, using sample data">
       <div className="kpis">
         <div className="kpi"><small>Revenue</small><strong><CountUp value={124500} /></strong><span className="d">+12%</span></div>
         <div className="kpi"><small>Costs</small><strong><CountUp value={76250} /></strong><span className="d" style={{ color: "var(--a-mut)" }}>incl. delivery</span></div>
@@ -258,7 +258,7 @@ export function ProfitApp() {
 
 export function Recovery({ className = "" }: { className?: string }) {
   return (
-    <AppWin title="Failed order recovery" dk className={className} label="Failed order recovery card, using sample data">
+    <AppWin title="Failed order recovery" className={className} label="Failed order recovery card, using sample data">
       <div className="a-title"><strong>Failed delivery · #ZB-1039</strong><Pill tone="wait">Recovering</Pill></div>
       <ul className="steps-a">
         <li className="done"><span><b>Delivery failed</b><br /><small>Customer unreachable</small></span><small>09:12</small></li>
