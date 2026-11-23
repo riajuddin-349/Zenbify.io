@@ -47,6 +47,28 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Visual storefront showcase */}
+      <section className="visual-shop" aria-labelledby="visual-shop-title">
+        <div className="visual-shop-wrap">
+          <div className="visual-shop-head">
+            <div><span className="visual-eyebrow">A storefront that sells</span><h2 id="visual-shop-title">Make every product<br/><em>look worth buying.</em></h2></div>
+            <p>Launch a polished online store, showcase your products and manage every order from one connected workspace.</p>
+          </div>
+          <a className="visual-campaign" href="/features" aria-label="Explore Zenbify store features">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=88" alt="Modern fashion boutique storefront" />
+            <div className="visual-campaign-copy"><span>YOUR BRAND. YOUR STORE.</span><strong>Turn a scroll<br/>into a sale.</strong><small>Build your storefront with Zenbify <b>↗</b></small></div>
+            <div className="visual-campaign-tag">STOREFRONT BUILDER · 01</div>
+          </a>
+          <div className="visual-category-head"><h3>Built for the things you sell</h3><span>Choose a look for your business</span></div>
+          <div className="visual-category-grid">
+            <a href="/features" className="visual-category"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85" alt="Fashion clothing collection"/><span>01 / FASHION</span><b>The Fashion Edit <i>↗</i></b></a>
+            <a href="/features" className="visual-category"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=85" alt="Consumer electronics and gadgets"/><span>02 / ELECTRONICS</span><b>Next in Tech <i>↗</i></b></a>
+            <a href="/features" className="visual-category"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85" alt="Curated lifestyle products"/><span>03 / SINGLE PRODUCT</span><b>One of a Kind <i>↗</i></b></a>
+            <a href="/features" className="visual-category"><img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85" alt="Warm modern home interior"/><span>04 / HOME & LIVING</span><b>Spaces & Stories <i>↗</i></b></a>
+          </div>
+        </div>
+      </section>
+
       {/* Product showcase: devices + order-to-courier flow */}
       <section className="sec on-paper-2 showcase" aria-labelledby="show-title">
         <div className="wrap">
